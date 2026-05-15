@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { postSlug } from "../../utils/posts";
+
+const posts = (await getCollection("blog"))
+  .map((post) => ({ ...post.data, slug: postSlug(post) }))
+  .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+---
+
+<BaseLayout title="บทความประกัน | พี่มิก ไทยประกัน" description="รวมบทความประกันสุขภาพ ประกันชีวิต และการวางแผนความเสี่ยงสำหรับคนไทย">
+  <section class="container article-header">
+    <p class="eyebrow">Blog</p>
+    <h1>บทความประกัน</h1>
+    <p class="lead">ความรู้ที่ช่วยให้เลือกแผนได้รอบคอบขึ้น พร้อมคำถามที่ควรถามก่อนตัดสินใจ</p>
+  </section>
+  <section class="section-band">
+    <div class="container article-list">
+      {posts.map((post) => (
+        <article class="card article-card">
+          <p class="meta">{post.category} · {new Date(post.publishDate).toLocaleDateString("th-TH")}</p>
+          <h2><a href={`/blog/${post.slug}/`}>{post.title}</a></h2>
+          <p>{post.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

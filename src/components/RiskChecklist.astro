@@ -1,0 +1,23 @@
+---
+const rows = [
+  { label: "ค่าห้อง", width: "55%" },
+  { label: "ค่าผ่าตัด", width: "72%" },
+  { label: "OPD", width: "44%" },
+  { label: "เงินสำรอง", width: "62%" }
+];
+---
+
+<section class="tool-box" aria-labelledby="risk-title">
+  <h2 id="risk-title">เช็กความเสี่ยงก่อนเลือกแผน</h2>
+  <p>ลองมอง 4 จุดนี้ก่อนเทียบเบี้ย เพราะวงเงินสูงอย่างเดียวอาจไม่ตอบโจทย์ชีวิตจริง</p>
+  <div class="risk-scale">
+    {rows.map((row) => (
+      <div class="risk-row">
+        <strong>{row.label}</strong>
+        <div class="bar" aria-label={row.label}>
+          <span style={`width: ${row.width}`}></span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

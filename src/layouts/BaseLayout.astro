@@ -1,0 +1,55 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title = "พี่มิกคลิกทุกแผน | ความรู้ประกันแบบเข้าใจง่าย",
+  description = "บทความประกันสุขภาพ ประกันชีวิต และการวางแผนความเสี่ยงสำหรับคนไทย อ่านง่าย ตรวจสอบได้ และทัก LINE OA เพื่อออกแบบแผนได้",
+  canonicalPath = Astro.url.pathname
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL("https://example.com");
+const canonical = new URL(canonicalPath, siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <nav class="nav" aria-label="หลัก">
+          <a class="brand" href="/">พี่มิกคลิกทุกแผน</a>
+          <div class="nav-links">
+            <a href="/blog/">บทความ</a>
+            <a href="/tools/">เครื่องมือ</a>
+            <a href="/contact/">ติดต่อ</a>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer class="footer">
+        <div class="container">
+          <strong>หมายเหตุ:</strong> ข้อมูลในเว็บไซต์นี้เป็นความรู้ทั่วไป ไม่ใช่คำเสนอขายเฉพาะบุคคล ความคุ้มครองและเงื่อนไขเป็นไปตามกรมธรรม์และการพิจารณาของบริษัทประกัน · ภาคิณ ทิพย์เดชาทร ตัวแทนไทยประกันชีวิต เลขที่ใบอนุญาต 5001042234
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

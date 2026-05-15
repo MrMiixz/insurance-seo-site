@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { postSlug } from "../utils/posts";
+
+const posts = (await getCollection("blog"))
+  .map((post) => ({ ...post.data, slug: postSlug(post) }))
+  .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+---
+
+<BaseLayout>
+  <section class="container hero">
+    <div>
+      <p class="eyebrow">Insurance SEO Knowledge Hub</p>
+      <h1>ประกันสุขภาพและชีวิต แบบอ่านแล้วรู้ว่าควรรีบวางแผนอะไร</h1>
+      <p class="lead">บทความที่ช่วยให้คนไทยเห็นความเสี่ยงจากค่ารักษา ภาระครอบครัว ภาษี และอนาคตการเงิน แล้วทัก LINE OA เพื่อให้ช่วยออกแบบแผนอย่างเหมาะสม</p>
+      <div class="actions">
+        <a class="button" href="/blog/">อ่านบทความล่าสุด</a>
+        <a class="button secondary" href="https://lin.ee/pISkWyf" rel="noopener noreferrer">ทัก LINE OA</a>
+      </div>
+    </div>
+    <aside class="hero-panel">
+      <p class="eyebrow">Daily Automation Ready</p>
+      <h2>ออกแบบไว้สำหรับบทความรายวัน</h2>
+      <div class="stat-list">
+        <div class="stat"><strong>SEO</strong><span>Title, meta, FAQ และ schema พร้อมต่อยอด</span></div>
+        <div class="stat"><strong>Assets</strong><span>รองรับภาพจาก Drive และไฟล์ WebP ขนาดเล็ก</span></div>
+        <div class="stat"><strong>Facebook</strong><span>แตกโพสต์ชวนแชร์ แล้วพาคนกลับมาอ่านต่อหรือทัก LINE</span></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section-band">
+    <div class="container">
+      <h2>บทความล่าสุด</h2>
+      <div class="article-list">
+        {posts.map((post) => (
+          <article class="card article-card">
+            <p class="meta">{post.category} · {new Date(post.publishDate).toLocaleDateString("th-TH")}</p>
+            <h3><a href={`/blog/${post.slug}/`}>{post.title}</a></h3>
+            <p>{post.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-band">
+    <div class="container grid">
+      <div class="card">
+        <h3>บทความเน้น SEO</h3>
+        <p>วางโครงให้ค้นหาเจอจากคำถามจริง เช่น OPD คุ้มไหม เลือกวงเงินเท่าไหร่ดี หรือค่ารักษาเอกชนต้องเตรียมยังไง</p>
+      </div>
+      <div class="card">
+        <h3>คุมพื้นที่ภาพ</h3>
+        <p>ใช้ภาพเท่าที่จำเป็น พร้อมแนวทางบีบอัด WebP และให้ UI ที่เป็นข้อมูลทำด้วย code แทนการใส่รูปหลายไฟล์</p>
+      </div>
+      <div class="card">
+        <h3>ต่อยอดลง Facebook</h3>
+        <p>ทุกบทความควรถูกแตกเป็นโพสต์สั้น คอมเมนต์ตอบ และ caption ที่ชวนแชร์ พร้อมลิงก์กลับเว็บและ LINE OA</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

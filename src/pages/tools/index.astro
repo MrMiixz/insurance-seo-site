@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RiskChecklist from "../../components/RiskChecklist.astro";
+---
+
+<BaseLayout title="เครื่องมือช่วยคิดก่อนเลือกประกัน | พี่มิก ไทยประกัน" description="เช็กลิสต์และเครื่องมือเล็กๆ สำหรับช่วยคิดก่อนเลือกประกันสุขภาพหรือประกันชีวิต">
+  <section class="container article-header">
+    <p class="eyebrow">Tools</p>
+    <h1>เครื่องมือช่วยคิดก่อนเลือกประกัน</h1>
+    <p class="lead">หน้านี้จะค่อยๆ เพิ่ม calculator, checklist และตารางเปรียบเทียบที่ทำด้วย code เพื่อประหยัดพื้นที่ภาพและช่วยให้คนอ่านเข้าใจเร็วขึ้น</p>
+  </section>
+  <section class="container">
+    <RiskChecklist />
+  </section>
+</BaseLayout>

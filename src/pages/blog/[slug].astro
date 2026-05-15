@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTABox from "../../components/CTABox.astro";
+import FAQ from "../../components/FAQ.astro";
+import RiskChecklist from "../../components/RiskChecklist.astro";
+import { getCollection, render } from "astro:content";
+import { postSlug } from "../../utils/posts";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: postSlug(post) },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const frontmatter = post.data;
+const title = `${frontmatter.title} | พี่มิก ไทยประกัน`;
+---
+
+<BaseLayout title={title} description={frontmatter.description} canonicalPath={`/blog/${Astro.params.slug}/`}>
+  <header class="container article-header">
+    <p class="eyebrow">{frontmatter.category}</p>
+    <h1>{frontmatter.title}</h1>
+    <p class="lead">{frontmatter.description}</p>
+    <p class="meta">เผยแพร่ {new Date(frontmatter.publishDate).toLocaleDateString("th-TH")}</p>
+  </header>
+
+  <div class="container article-layout">
+    <article class="article">
+      {frontmatter.heroImage && (
+        <img src={frontmatter.heroImage} alt={frontmatter.heroAlt ?? frontmatter.title} loading="eager" />
+      )}
+      <Content />
+      {frontmatter.uiBlock === "risk-checklist" && <RiskChecklist />}
+      {frontmatter.faq && <FAQ items={frontmatter.faq} />}
+    </article>
+    <aside class="sidebar">
+      <CTABox />
+    </aside>
+  </div>
+</BaseLayout>
