@@ -171,6 +171,18 @@ h3 {
   padding: 22px;
 }
 
+.hero-visual {
+  overflow: hidden;
+}
+
+.hero-visual img {
+  background: #f2f5ef;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 18px;
+  width: 100%;
+}
+
 .stat-list {
   display: grid;
   gap: 12px;
@@ -220,6 +232,22 @@ h3 {
   display: grid;
   gap: 10px;
   min-height: 210px;
+}
+
+.article-thumb {
+  background: #f2f5ef;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.article-thumb img {
+  aspect-ratio: 16 / 9;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .article-card a {

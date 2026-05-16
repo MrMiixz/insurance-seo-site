@@ -18,6 +18,11 @@ const posts = (await getCollection("blog"))
     <div class="container article-list">
       {posts.map((post) => (
         <article class="card article-card">
+          {post.heroImage && (
+            <a class="article-thumb" href={`/blog/${post.slug}/`} aria-label={`อ่านบทความ ${post.title}`}>
+              <img src={post.heroImage} alt={post.heroAlt ?? post.title} loading="lazy" />
+            </a>
+          )}
           <p class="meta">{post.category} · {new Date(post.publishDate).toLocaleDateString("th-TH")}</p>
           <h2><a href={`/blog/${post.slug}/`}>{post.title}</a></h2>
           <p>{post.description}</p>

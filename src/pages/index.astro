@@ -6,6 +6,8 @@ import { postSlug } from "../utils/posts";
 const posts = (await getCollection("blog"))
   .map((post) => ({ ...post.data, slug: postSlug(post) }))
   .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+
+const latestPost = posts[0];
 ---
 
 <BaseLayout>
@@ -19,7 +21,12 @@ const posts = (await getCollection("blog"))
         <a class="button secondary" href="https://lin.ee/pISkWyf" rel="noopener noreferrer">ทัก LINE OA</a>
       </div>
     </div>
-    <aside class="hero-panel">
+    <aside class="hero-panel hero-visual">
+      {latestPost?.heroImage && (
+        <a href={`/blog/${latestPost.slug}/`} aria-label={`อ่านบทความ ${latestPost.title}`}>
+          <img src={latestPost.heroImage} alt={latestPost.heroAlt ?? latestPost.title} loading="eager" />
+        </a>
+      )}
       <p class="eyebrow">เริ่มจากคำถามที่คนเจอจริง</p>
       <h2>ป่วยหนึ่งครั้ง ต้องเตรียมเงินเท่าไหร่ และประกันช่วยตรงไหนได้บ้าง</h2>
       <div class="stat-list">
@@ -36,6 +43,11 @@ const posts = (await getCollection("blog"))
       <div class="article-list">
         {posts.map((post) => (
           <article class="card article-card">
+            {post.heroImage && (
+              <a class="article-thumb" href={`/blog/${post.slug}/`} aria-label={`อ่านบทความ ${post.title}`}>
+                <img src={post.heroImage} alt={post.heroAlt ?? post.title} loading="lazy" />
+              </a>
+            )}
             <p class="meta">{post.category} · {new Date(post.publishDate).toLocaleDateString("th-TH")}</p>
             <h3><a href={`/blog/${post.slug}/`}>{post.title}</a></h3>
             <p>{post.description}</p>
