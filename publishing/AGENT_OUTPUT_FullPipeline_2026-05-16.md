@@ -133,7 +133,7 @@ publishDate: "2026-05-16"
 updatedDate: "2026-05-16"
 heroImage: "/images/copayment-health-insurance-2569-cover.webp"
 heroAlt: "ชายวัยทำงานกำลังอ่านเอกสารค่ารักษาและเช็กแผนประกันสุขภาพ"
-socialImage: "/images/copayment-health-insurance-2569-og.jpg"
+socialImage: "/images/copayment-health-insurance-2569-og-v2.jpg"
 category: "ประกันสุขภาพ"
 tags: ["ประกันสุขภาพเหมาจ่าย", "Co-payment", "ประกันสุขภาพ 2569", "ค่ารักษาพยาบาล", "OPD IPD"]
 uiBlock: "risk-checklist"
@@ -228,7 +228,7 @@ LINE OA: https://lin.ee/pISkWyf
 
 - Article: `src/content/blog/copayment-health-insurance-2569.md`
 - Hero image: `public/images/copayment-health-insurance-2569-cover.webp`
-- Facebook/Open Graph image: `public/images/copayment-health-insurance-2569-og.jpg`
+- Facebook/Open Graph image: `public/images/copayment-health-insurance-2569-og-v2.jpg`
 - Facebook package: `publishing/2026-05-16-copayment-health-insurance-facebook.md`
 
 ### Live URL

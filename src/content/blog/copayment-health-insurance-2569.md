@@ -5,7 +5,7 @@ publishDate: "2026-05-16"
 updatedDate: "2026-05-16"
 heroImage: "/images/copayment-health-insurance-2569-cover.webp"
 heroAlt: "ชายวัยทำงานกำลังอ่านเอกสารค่ารักษาและเช็กแผนประกันสุขภาพ"
-socialImage: "/images/copayment-health-insurance-2569-og.jpg"
+socialImage: "/images/copayment-health-insurance-2569-og-v2.jpg"
 category: "ประกันสุขภาพ"
 tags: ["ประกันสุขภาพเหมาจ่าย", "Co-payment", "ประกันสุขภาพ 2569", "ค่ารักษาพยาบาล", "OPD IPD"]
 uiBlock: "risk-checklist"
