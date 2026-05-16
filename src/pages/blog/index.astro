@@ -8,11 +8,11 @@ const posts = (await getCollection("blog"))
   .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 ---
 
-<BaseLayout title="บทความประกัน | พี่มิก ไทยประกัน" description="รวมบทความประกันสุขภาพ ประกันชีวิต และการวางแผนความเสี่ยงสำหรับคนไทย">
+<BaseLayout title="บทความประกัน | พี่มิกคลิกทุกแผน" description="รวมบทความประกันสุขภาพ ประกันชีวิต และการวางแผนความเสี่ยง อ่านง่าย พร้อมคำถามที่ควรถามก่อนตัดสินใจ">
   <section class="container article-header">
     <p class="eyebrow">Blog</p>
     <h1>บทความประกัน</h1>
-    <p class="lead">ความรู้ที่ช่วยให้เลือกแผนได้รอบคอบขึ้น พร้อมคำถามที่ควรถามก่อนตัดสินใจ</p>
+    <p class="lead">ความรู้ที่ช่วยให้เลือกแผนได้รอบคอบขึ้น พร้อมคำถามที่ควรถามก่อนตัดสินใจซื้อประกันสุขภาพหรือประกันชีวิต</p>
   </section>
   <section class="section-band">
     <div class="container article-list">
