@@ -3,8 +3,9 @@ title: "ประกันสุขภาพเหมาจ่ายยังค
 description: "ค่ารักษาพยาบาลสูงขึ้นและเงื่อนไข Co-payment ทำให้หลายคนเริ่มลังเลว่าจะซื้อประกันสุขภาพเหมาจ่ายดีไหม บทความนี้ชวนเช็กสิ่งที่ควรรู้ก่อนตัดสินใจ"
 publishDate: "2026-05-16"
 updatedDate: "2026-05-16"
-heroImage: "/images/copayment-health-insurance-2569.svg"
-heroAlt: "ภาพประกอบคำถามประกันสุขภาพเหมาจ่ายและ Co-payment ปี 2569"
+heroImage: "/images/copayment-health-insurance-2569-cover.webp"
+heroAlt: "ชายวัยทำงานกำลังอ่านเอกสารค่ารักษาและเช็กแผนประกันสุขภาพ"
+socialImage: "/images/copayment-health-insurance-2569-og.jpg"
 category: "ประกันสุขภาพ"
 tags: ["ประกันสุขภาพเหมาจ่าย", "Co-payment", "ประกันสุขภาพ 2569", "ค่ารักษาพยาบาล", "OPD IPD"]
 uiBlock: "risk-checklist"

@@ -9,6 +9,7 @@ const blog = defineCollection({
     updatedDate: z.string().optional(),
     heroImage: z.string().optional(),
     heroAlt: z.string().optional(),
+    socialImage: z.string().optional(),
     category: z.string(),
     tags: z.array(z.string()).default([]),
     uiBlock: z.enum(["risk-checklist"]).optional(),

@@ -20,7 +20,7 @@ const frontmatter = post.data;
 const title = `${frontmatter.title} | พี่มิก ไทยประกัน`;
 ---
 
-<BaseLayout title={title} description={frontmatter.description} canonicalPath={`/blog/${Astro.params.slug}/`}>
+<BaseLayout title={title} description={frontmatter.description} canonicalPath={`/blog/${Astro.params.slug}/`} image={frontmatter.socialImage ?? frontmatter.heroImage}>
   <header class="container article-header">
     <p class="eyebrow">{frontmatter.category}</p>
     <h1>{frontmatter.title}</h1>
