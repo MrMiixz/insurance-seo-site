@@ -323,7 +323,7 @@ Prompt 3:
 
 ผมสรุปไว้เป็นบทความอ่านง่ายๆ ให้แล้วครับ
 
-อ่านต่อ: https://insurance-by-miixz.pages.dev/blog/copayment-health-insurance-2569/
+อ่านต่อ: https://insurance-by-miixz.pages.dev/share/copayment-health-insurance-2569/
 
 ถ้าอยากให้ช่วยไล่โจทย์ของตัวเอง ทัก LINE OA แล้วพิมพ์ว่า “สุขภาพ 2569” ได้เลยครับ
 
