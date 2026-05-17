@@ -305,6 +305,19 @@ h3 {
   width: 100%;
 }
 
+.contact-banner {
+  border-radius: var(--radius);
+  display: block;
+  margin: 18px 0;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.contact-banner img {
+  background: #1f5ab6;
+  width: 100%;
+}
+
 .sidebar {
   align-self: start;
   position: sticky;

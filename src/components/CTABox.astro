@@ -6,13 +6,15 @@ interface Props {
   body?: string;
   primaryLabel?: string;
   primaryHref?: string;
+  showSocial?: boolean;
 }
 
 const {
   title = "อยากให้ช่วยออกแบบแผนประกันให้เข้ากับชีวิตจริงไหม",
   body = "ทัก LINE OA มาได้ครับ ผมจะช่วยไล่โจทย์เรื่องงบ โรงพยาบาล ความเสี่ยง และแผนเดิมที่มี ก่อนค่อยดูว่าแบบไหนเหมาะกว่า",
   primaryLabel = "ทัก LINE OA",
-  primaryHref = "https://lin.ee/pISkWyf"
+  primaryHref = "https://lin.ee/pISkWyf",
+  showSocial = true
 } = Astro.props;
 ---
 
@@ -20,6 +22,6 @@ const {
   <h2>{title}</h2>
   <p>{body}</p>
   <a class="button" href={primaryHref} rel="noopener noreferrer"> {primaryLabel} </a>
-  <SocialContactLinks />
+  {showSocial && <SocialContactLinks />}
   <p class="meta">ภาคิณ ทิพย์เดชาทร ตัวแทนไทยประกันชีวิต เลขที่ใบอนุญาต 5001042234 · Tel. 082-9424666</p>
 </aside>

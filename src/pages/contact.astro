@@ -4,19 +4,25 @@ import CTABox from "../components/CTABox.astro";
 import SocialContactLinks from "../components/SocialContactLinks.astro";
 ---
 
-<BaseLayout title="ติดต่อพี่มิกคลิกทุกแผน" description="ช่องทางทัก LINE OA เพื่อเช็กแผนประกันสุขภาพ ประกันชีวิต และการวางแผนความเสี่ยง">
+<BaseLayout title="ติดต่อพี่มิกคลิกทุกแผน" description="ช่องทางติดต่อพี่มิกผ่าน LINE OA, Facebook และ TikTok เพื่อเช็กแผนประกันสุขภาพ ประกันชีวิต และการวางแผนความเสี่ยง">
   <section class="container article-header">
     <p class="eyebrow">Contact</p>
     <h1>ทักคุยเรื่องแผนประกันผ่าน LINE OA</h1>
     <p class="lead">เล่าโจทย์ งบประมาณ โรงพยาบาลที่ใช้ และประกันเดิมที่มีได้ครับ จะช่วยไล่คำถามก่อนเลือกแผนให้รอบคอบขึ้น</p>
   </section>
+
   <section class="container">
-    <CTABox />
+    <CTABox showSocial={false} />
+
     <div class="tool-box">
       <h2>ช่องทางออนไลน์</h2>
       <p>เลือกช่องทางที่สะดวกได้เลยครับ Facebook สำหรับดูโปรไฟล์และโพสต์, TikTok สำหรับคลิปสั้น, และ LINE OA สำหรับทักปรึกษาแผนโดยตรง</p>
+      <a class="contact-banner" href="https://lin.ee/pISkWyf" target="_blank" rel="noopener noreferrer" aria-label="ทัก LINE OA เพื่อปรึกษาแผนประกัน">
+        <img src="/images/line-oa-article-cta.webp" alt="สอบถามเพิ่มเติมทางไลน์ กดตรงนี้ ติดต่อพี่มิก ไทยประกันชีวิต โทร 082-9424666" loading="lazy" />
+      </a>
       <SocialContactLinks />
     </div>
+
     <div class="tool-box">
       <h2>ข้อมูลผู้ให้บริการ</h2>
       <p>สวัสดีครับ ภาคิณ ทิพย์เดชาทร ตัวแทนไทยประกันชีวิต เลขที่ใบอนุญาต 5001042234 ยินดีให้บริการครับ</p>
