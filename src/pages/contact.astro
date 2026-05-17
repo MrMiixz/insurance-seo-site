@@ -1,36 +1,91 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import CTABox from "../components/CTABox.astro";
-import ContactTrustSection from "../components/ContactTrustSection.astro";
 import SocialContactLinks from "../components/SocialContactLinks.astro";
 ---
 
-<BaseLayout title="ติดต่อพี่มิกคลิกทุกแผน" description="ช่องทางติดต่อพี่มิกผ่าน LINE OA, Facebook และ TikTok เพื่อเช็กแผนประกันสุขภาพ ประกันชีวิต และการวางแผนความเสี่ยง">
-  <section class="container article-header">
-    <p class="eyebrow">Contact</p>
-    <h1>ทักคุยเรื่องแผนประกันผ่าน LINE OA</h1>
-    <p class="lead">เล่าโจทย์ งบประมาณ โรงพยาบาลที่ใช้ และประกันเดิมที่มีได้ครับ จะช่วยไล่คำถามก่อนเลือกแผนให้รอบคอบขึ้น</p>
-  </section>
+<BaseLayout title="ปรึกษาแผนประกันกับพี่มิก | พี่มิกคลิกทุกแผน" description="ปรึกษาแผนประกันสุขภาพ ประกันชีวิต และวางแผนครอบครัวกับภาคิณ ทิพย์เดชาทร ตัวแทนไทยประกันชีวิต เลขที่ใบอนุญาต 5001042234 ผ่าน LINE OA">
+  <section class="contact-landing">
+    <div class="contact-hero">
+      <div class="contact-copy">
+        <p class="contact-kicker">พี่มิกคลิกทุกแผน</p>
+        <h1>เลือกประกันให้เข้ากับชีวิตจริง ก่อนตัดสินใจจ่ายเบี้ย</h1>
+        <p>ส่งโจทย์ชีวิต งบประมาณ โรงพยาบาลที่ใช้ และสวัสดิการเดิมมาให้ดูได้ครับ ผมช่วยไล่คำถามก่อนว่าแผนไหนควรเติม แผนไหนยังไม่จำเป็น</p>
+        <div class="contact-actions">
+          <a class="contact-primary" href="https://lin.ee/pISkWyf" target="_blank" rel="noopener noreferrer">ทัก LINE OA เพื่อเริ่มคุย</a>
+          <a class="contact-secondary" href="#proof">ดูความน่าเชื่อถือ</a>
+        </div>
+        <div class="contact-proof-row" aria-label="ข้อมูลยืนยันตัวแทน">
+          <span>ใบอนุญาต 5001042234</span>
+          <span>18+ ปีประสบการณ์</span>
+          <span>MDRT 2025</span>
+        </div>
+      </div>
+      <figure class="contact-portrait">
+        <img src="/images/contact-mdrt-2025.webp" alt="ภาคิณ ทิพย์เดชาทร ตัวแทนไทยประกันชีวิต กับข้อความ MDRT 2025" loading="eager" />
+      </figure>
+    </div>
 
-  <section class="container">
-    <ContactTrustSection />
+    <div class="contact-strip" aria-label="ประเด็นที่ช่วยวางแผน">
+      <span>ประกันสุขภาพ</span>
+      <span>ประกันชีวิต</span>
+      <span>วางแผนครอบครัว</span>
+      <span>ตรวจแผนเดิม</span>
+    </div>
 
-    <CTABox showSocial={false} />
+    <section class="contact-section contact-problems">
+      <div>
+        <p class="contact-kicker">เริ่มจากคำถามจริง</p>
+        <h2>คนส่วนใหญ่ไม่ได้ต้องการซื้อแพงขึ้น แค่ไม่อยากซื้อผิด</h2>
+      </div>
+      <div class="problem-list">
+        <p>มีประกันกลุ่มอยู่แล้ว ต้องซื้อเพิ่มไหม</p>
+        <p>OPD จำเป็นหรือเอาเงินไปเพิ่ม IPD ก่อนดี</p>
+        <p>โรงพยาบาลเอกชนที่ใช้จริง วงเงินพอหรือเปล่า</p>
+        <p>ถ้าวันหนึ่งรายได้หยุด ครอบครัวจะยังไปต่อได้ไหม</p>
+      </div>
+    </section>
 
-    <div class="tool-box">
-      <h2>ช่องทางออนไลน์</h2>
-      <p>เลือกช่องทางที่สะดวกได้เลยครับ Facebook สำหรับดูโปรไฟล์และโพสต์, TikTok สำหรับคลิปสั้น, และ LINE OA สำหรับทักปรึกษาแผนโดยตรง</p>
-      <a class="contact-banner" href="https://lin.ee/pISkWyf" target="_blank" rel="noopener noreferrer" aria-label="ทัก LINE OA เพื่อปรึกษาแผนประกัน">
+    <section id="proof" class="contact-section proof-section">
+      <div class="proof-copy">
+        <p class="contact-kicker">ตรวจสอบได้</p>
+        <h2>คุยกับตัวแทนที่มีตัวตน และมีหน้าที่ช่วยออกแบบให้เหมาะกับคุณ</h2>
+        <p>ผมไม่อยากให้คุณเลือกจากคำว่าเบี้ยถูกหรือวงเงินสูงอย่างเดียว เพราะแผนที่ดีต้องอยู่กับงบจริง โรงพยาบาลจริง และความเสี่ยงจริงของบ้านคุณ</p>
+        <div class="proof-grid">
+          <div><strong>ภาคิณ ทิพย์เดชาทร</strong><span>ตัวแทนไทยประกันชีวิต</span></div>
+          <div><strong>5001042234</strong><span>เลขที่ใบอนุญาตตัวแทนประกันชีวิต</span></div>
+          <div><strong>082-9424666</strong><span>โทรศัพท์สำหรับติดต่อ</span></div>
+        </div>
+      </div>
+      <figure class="coverage-visual">
+        <img src="/images/contact-service-coverage.webp" alt="แผนที่บริการด้วยใจครอบคลุมทั่วไทย" loading="lazy" />
+      </figure>
+    </section>
+
+    <section class="contact-section steps-section">
+      <div>
+        <p class="contact-kicker">คุยง่าย ไม่ต้องเตรียมเยอะ</p>
+        <h2>ทักมาแล้วเริ่มจาก 3 เรื่องนี้พอ</h2>
+      </div>
+      <ol class="step-flow">
+        <li><strong>บอกเป้าหมาย</strong><span>อยากคุ้มครองสุขภาพ ครอบครัว ภาษี หรือเงินก้อน</span></li>
+        <li><strong>ส่งแผนเดิมถ้ามี</strong><span>ดูช่องว่างก่อน ไม่ซื้อซ้ำโดยไม่จำเป็น</span></li>
+        <li><strong>เทียบทางเลือก</strong><span>เลือกแบบที่รับเบี้ยระยะยาวไหวและตรงโจทย์จริง</span></li>
+      </ol>
+    </section>
+
+    <section class="contact-section social-section">
+      <div>
+        <p class="contact-kicker">ติดตามก่อนก็ได้</p>
+        <h2>ดูโปรไฟล์ โพสต์ และคลิปสั้นก่อนทัก</h2>
+      </div>
+      <SocialContactLinks />
+    </section>
+
+    <section class="final-line-cta">
+      <a href="https://lin.ee/pISkWyf" target="_blank" rel="noopener noreferrer" aria-label="ทัก LINE OA เพื่อปรึกษาแผนประกัน">
         <img src="/images/line-oa-article-cta.webp" alt="สอบถามเพิ่มเติมทางไลน์ กดตรงนี้ ติดต่อพี่มิก ไทยประกันชีวิต โทร 082-9424666" loading="lazy" />
       </a>
-      <SocialContactLinks />
-    </div>
-
-    <div class="tool-box">
-      <h2>ข้อมูลผู้ให้บริการ</h2>
       <p>สวัสดีครับ ภาคิณ ทิพย์เดชาทร ตัวแทนไทยประกันชีวิต เลขที่ใบอนุญาต 5001042234 ยินดีให้บริการครับ</p>
-      <p>Tel. 082-9424666</p>
-      <p class="meta">#พี่มิกคลิกทุกแผน #พี่มิกไทยประกัน #ตัวแทนประกันชีวิตหาดใหญ่ #ตัวแทนประกันหาดใหญ่ #ไทยประกันชีวิตหาดใหญ่ #ไทยประกันชีวิต #ประกันชีวิต #ประกันออนไลน์ #ประกันสุขภาพ #ลดหย่อนภาษี</p>
-    </div>
+    </section>
   </section>
 </BaseLayout>
