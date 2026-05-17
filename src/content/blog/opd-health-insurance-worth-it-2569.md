@@ -3,9 +3,9 @@ title: "OPD คุ้มไหม ถ้าไม่ได้หาหมอบ�
 description: "OPD คุ้มไหม ประกันผู้ป่วยนอกเหมาะกับใคร ก่อนซื้อควรดูสวัสดิการเดิม วงเงินต่อครั้ง โรงพยาบาลที่ใช้จริง และความคุ้มค่าของเบี้ยประกัน"
 publishDate: "2026-05-17"
 updatedDate: "2026-05-17"
-heroImage: "/images/copayment-health-insurance-2569-cover.webp"
+heroImage: "/images/opd-health-insurance-worth-it-2569-cover.webp"
 heroAlt: "ชายวัยทำงานกำลังอ่านเอกสารค่ารักษาและเช็กแผนประกันสุขภาพ"
-socialImage: "/images/copayment-health-insurance-2569-og-v2.jpg"
+socialImage: "/images/opd-health-insurance-worth-it-2569-og.jpg"
 category: "ประกันสุขภาพ"
 tags: ["OPD", "IPD", "ประกันสุขภาพ OPD", "ประกันสุขภาพ 2569", "ประกันผู้ป่วยนอก"]
 uiBlock: "risk-checklist"
