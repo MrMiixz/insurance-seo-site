@@ -318,6 +318,76 @@ h3 {
   width: 100%;
 }
 
+.trust-section {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1.15fr);
+  margin-bottom: 22px;
+  padding: 24px;
+}
+
+.trust-section h2 {
+  margin-top: 0;
+}
+
+.trust-facts {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.trust-facts div {
+  border-left: 4px solid var(--brand);
+  padding-left: 12px;
+}
+
+.trust-facts strong,
+.trust-facts span {
+  display: block;
+}
+
+.trust-facts strong {
+  color: var(--brand-dark);
+  font-size: 1.08rem;
+}
+
+.trust-facts span {
+  color: var(--muted);
+}
+
+.trust-gallery {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+}
+
+.trust-gallery figure {
+  margin: 0;
+}
+
+.trust-gallery img {
+  aspect-ratio: 4 / 3;
+  background: #edf3f2;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.trust-gallery figure:first-child img {
+  object-position: center 32%;
+}
+
+.trust-gallery figcaption {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
 .sidebar {
   align-self: start;
   position: sticky;
@@ -437,5 +507,10 @@ h3 {
 
   .sidebar {
     position: static;
+  }
+
+  .trust-section,
+  .trust-gallery {
+    grid-template-columns: 1fr;
   }
 }
