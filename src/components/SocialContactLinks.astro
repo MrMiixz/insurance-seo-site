@@ -1,0 +1,28 @@
+---
+const links = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/mrmiixz",
+    handle: "พี่มิก ไทยประกัน"
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@miixz.clickplan",
+    handle: "@miixz.clickplan"
+  },
+  {
+    label: "LINE OA",
+    href: "https://lin.ee/pISkWyf",
+    handle: "ทักเพื่อปรึกษาแผน"
+  }
+];
+---
+
+<div class="social-contact" aria-label="ช่องทางติดต่อและติดตาม">
+  {links.map((link) => (
+    <a class="social-link" href={link.href} target="_blank" rel="noopener noreferrer">
+      <strong>{link.label}</strong>
+      <span>{link.handle}</span>
+    </a>
+  ))}
+</div>

@@ -1,4 +1,6 @@
 ---
+import SocialContactLinks from "./SocialContactLinks.astro";
+
 interface Props {
   title?: string;
   body?: string;
@@ -18,5 +20,6 @@ const {
   <h2>{title}</h2>
   <p>{body}</p>
   <a class="button" href={primaryHref} rel="noopener noreferrer"> {primaryLabel} </a>
+  <SocialContactLinks />
   <p class="meta">ภาคิณ ทิพย์เดชาทร ตัวแทนไทยประกันชีวิต เลขที่ใบอนุญาต 5001042234 · Tel. 082-9424666</p>
 </aside>

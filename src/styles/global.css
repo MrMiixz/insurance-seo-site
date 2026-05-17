@@ -321,6 +321,40 @@ h3 {
   margin-top: 0;
 }
 
+.social-contact {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.social-link {
+  align-items: center;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 10px 12px;
+  text-decoration: none;
+}
+
+.social-link strong {
+  color: var(--brand-dark);
+}
+
+.social-link span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: right;
+}
+
+.social-link:hover {
+  border-color: var(--brand);
+}
+
 .faq details {
   background: white;
   border: 1px solid var(--line);
