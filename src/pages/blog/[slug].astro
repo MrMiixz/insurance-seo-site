@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArticleLineCTA from "../../components/ArticleLineCTA.astro";
+import ArticleInterestCTA from "../../components/ArticleInterestCTA.astro";
 import CTABox from "../../components/CTABox.astro";
 import FAQ from "../../components/FAQ.astro";
 import RiskChecklist from "../../components/RiskChecklist.astro";
@@ -37,6 +38,7 @@ const title = `${frontmatter.title} | พี่มิก ไทยประก�
       <Content />
       {frontmatter.uiBlock === "risk-checklist" && <RiskChecklist />}
       {frontmatter.faq && <FAQ items={frontmatter.faq} />}
+      <ArticleInterestCTA />
       <ArticleLineCTA />
     </article>
     <aside class="sidebar">

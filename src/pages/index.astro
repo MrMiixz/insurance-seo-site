@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteInsights from "../components/SiteInsights.astro";
 import { postSlug } from "../utils/posts";
 
 const posts = (await getCollection("blog"))
@@ -35,6 +36,12 @@ const latestPost = posts[0];
         <div class="stat"><strong>คุยต่อแบบมีโจทย์</strong><span>เตรียมข้อมูลให้พร้อมก่อนทัก เพื่อออกแบบแผนได้ตรงขึ้น</span></div>
       </div>
     </aside>
+  </section>
+
+  <section class="section-band">
+    <div class="container">
+      <SiteInsights />
+    </div>
   </section>
 
   <section class="section-band">

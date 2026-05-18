@@ -1,0 +1,142 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+
+const incomeOptions = [
+  "ต่ำกว่า 20,000 บาท",
+  "20,000 - 35,000 บาท",
+  "35,001 - 50,000 บาท",
+  "50,001 - 80,000 บาท",
+  "80,001 - 120,000 บาท",
+  "มากกว่า 120,000 บาท"
+];
+
+const planOptions = [
+  "ประกันสุขภาพเหมาจ่าย",
+  "OPD / ผู้ป่วยนอก",
+  "ประกันชีวิตเพื่อครอบครัว",
+  "โรคร้ายแรง",
+  "ลดหย่อนภาษี",
+  "วางแผนเกษียณ",
+  "ประกันเด็ก / ครอบครัว",
+  "ยังไม่แน่ใจ อยากให้ช่วยดู"
+];
+---
+
+<section class:list={["lead-form-section", compact && "is-compact"]} aria-labelledby="lead-form-title">
+  <div class="lead-form-copy">
+    <p class="eyebrow">สนใจทำประกัน</p>
+    <h2 id="lead-form-title">ให้พี่มิกติดต่อกลับเพื่อช่วยดูแผน</h2>
+    <p>
+      กรอกข้อมูลเท่าที่สะดวก ระบบจะส่งรายละเอียดให้ผมเพื่อติดต่อกลับตามวันเวลาที่คุณเลือก
+      และช่วยเรียงลำดับแผนที่ควรคุยก่อนตามโจทย์จริงของคุณ
+    </p>
+  </div>
+
+  <form class="lead-form" data-lead-form>
+    <input type="hidden" name="sourcePage" value={Astro.url.pathname} />
+    <div class="lead-form-grid">
+      <label>
+        ชื่อ-นามสกุล
+        <input name="fullName" type="text" autocomplete="name" required placeholder="เช่น ภาคิณ ทิพย์เดชาทร" />
+      </label>
+      <label>
+        เบอร์โทร
+        <input name="phone" type="tel" autocomplete="tel" required placeholder="เช่น 082-9424666" />
+      </label>
+      <label>
+        วัน-เวลาที่สะดวกให้นัด
+        <input name="preferredTime" type="text" required placeholder="เช่น พุธ 19:00 หรือ เสาร์ช่วงบ่าย" />
+      </label>
+      <label>
+        Line ID
+        <input name="lineId" type="text" placeholder="ถ้ามี" />
+      </label>
+      <label>
+        Email
+        <input name="email" type="email" autocomplete="email" placeholder="ถ้าสะดวกให้ส่งรายละเอียดทางอีเมล" />
+      </label>
+      <label>
+        รายได้เฉลี่ยต่อเดือน
+        <select name="monthlyIncome" required>
+          <option value="">เลือกช่วงรายได้</option>
+          {incomeOptions.map((option) => <option value={option}>{option}</option>)}
+        </select>
+      </label>
+    </div>
+
+    <div class="plan-priority">
+      <div>
+        <strong>แผนที่สนใจ เรียงลำดับความสำคัญ 1-5</strong>
+        <span>เลือกเฉพาะที่สนใจก็ได้ ไม่จำเป็นต้องครบทุกช่อง</span>
+      </div>
+      <div class="priority-grid">
+        {[1, 2, 3, 4, 5].map((rank) => (
+          <label>
+            ลำดับ {rank}
+            <select name={`planPriority${rank}`}>
+              <option value="">ยังไม่เลือก</option>
+              {planOptions.map((option) => <option value={option}>{option}</option>)}
+            </select>
+          </label>
+        ))}
+      </div>
+    </div>
+
+    <label class="lead-note">
+      รายละเอียดเพิ่มเติม
+      <textarea name="note" rows="4" placeholder="เช่น มีประกันกลุ่มอยู่แล้ว อยากดูสุขภาพเพิ่ม หรือมีงบประมาณต่อเดือนประมาณเท่าไหร่"></textarea>
+    </label>
+
+    <div class="lead-consent">
+      <label>
+        <input type="checkbox" name="consent" value="yes" required />
+        ยินยอมให้ติดต่อกลับตามข้อมูลที่ให้ไว้เพื่อปรึกษาแผนประกัน
+      </label>
+    </div>
+
+    <div class="lead-actions">
+      <button class="button" type="submit">ส่งข้อมูลให้ติดต่อกลับ</button>
+      <a class="button secondary" href="https://lin.ee/pISkWyf" target="_blank" rel="noopener noreferrer">ทัก LINE OA แทน</a>
+    </div>
+    <p class="lead-form-status" data-lead-status aria-live="polite"></p>
+  </form>
+</section>
+
+<script>
+  // @ts-nocheck
+  document.querySelectorAll("[data-lead-form]").forEach((form) => {
+    const status = form.querySelector("[data-lead-status]");
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = form.querySelector("button[type='submit']");
+      button.disabled = true;
+      status.textContent = "กำลังส่งข้อมูล...";
+
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      payload.submittedAt = new Date().toISOString();
+
+      try {
+        const response = await fetch("/api/lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.message || "ส่งข้อมูลไม่สำเร็จ");
+        form.reset();
+        status.textContent = result.forwarded
+          ? "ส่งข้อมูลเรียบร้อยครับ ผมจะติดต่อกลับตามเวลาที่สะดวก"
+          : "บันทึกจากหน้าเว็บแล้ว แต่ยังไม่ได้ตั้งค่าระบบแจ้งเตือน กรุณาทัก LINE OA เพิ่มอีกช่องทางเพื่อความชัวร์";
+      } catch (error) {
+        status.textContent = "ตอนนี้ระบบส่งข้อมูลยังไม่สำเร็จ กรุณาทัก LINE OA หรือโทร 082-9424666 ได้เลยครับ";
+      } finally {
+        button.disabled = false;
+      }
+    });
+  });
+</script>

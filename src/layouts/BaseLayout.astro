@@ -50,6 +50,7 @@ const socialImage = image ? new URL(image, siteUrl).toString() : undefined;
           <div class="nav-links">
             <a href="/blog/">บทความ</a>
             <a href="/tools/">เครื่องมือ</a>
+            <a href="/interest/">สนใจทำประกัน</a>
             <a href="/contact/">ติดต่อ</a>
           </div>
         </nav>
@@ -63,5 +64,15 @@ const socialImage = image ? new URL(image, siteUrl).toString() : undefined;
         </div>
       </footer>
     </div>
+    <script>
+      if ("sendBeacon" in navigator) {
+        const payload = JSON.stringify({
+          path: window.location.pathname,
+          title: document.title,
+          referrer: document.referrer
+        });
+        navigator.sendBeacon("/api/pageview", new Blob([payload], { type: "application/json" }));
+      }
+    </script>
   </body>
 </html>

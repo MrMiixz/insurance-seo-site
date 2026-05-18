@@ -1,7 +1,7 @@
 import { getCollection } from "astro:content";
 import { postSlug } from "../utils/posts";
 
-const pages = ["/", "/blog/", "/tools/", "/contact/"];
+const pages = ["/", "/blog/", "/tools/", "/interest/", "/contact/"];
 
 export async function GET({ site }: { site: URL }) {
   const posts = (await getCollection("blog")).map((post) => `/blog/${postSlug(post)}/`);

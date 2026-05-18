@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LeadInterestForm from "../components/LeadInterestForm.astro";
+---
+
+<BaseLayout title="สนใจทำประกัน ให้พี่มิกติดต่อกลับ | พี่มิกคลิกทุกแผน" description="กรอกข้อมูลให้ภาคิณ ทิพย์เดชาทร ตัวแทนไทยประกันชีวิต ติดต่อกลับเพื่อช่วยดูแผนประกันสุขภาพ ประกันชีวิต และวางแผนความเสี่ยง">
+  <section class="container article-header interest-header">
+    <p class="eyebrow">Insurance planning request</p>
+    <h1>สนใจทำประกัน</h1>
+    <p class="lead">ถ้าอยากให้ช่วยดูจากชีวิตจริง งบประมาณ โรงพยาบาลที่ใช้ และแผนเดิมที่มี กรอกข้อมูลไว้ได้เลยครับ</p>
+  </section>
+  <div class="container">
+    <LeadInterestForm />
+  </div>
+</BaseLayout>
