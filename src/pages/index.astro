@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SiteInsights from "../components/SiteInsights.astro";
+import PinnedArticles from "../components/PinnedArticles.astro";
 import { postSlug } from "../utils/posts";
 
 const posts = (await getCollection("blog"))
@@ -40,7 +40,7 @@ const latestPost = posts[0];
 
   <section class="section-band">
     <div class="container">
-      <SiteInsights />
+      <PinnedArticles />
     </div>
   </section>
 

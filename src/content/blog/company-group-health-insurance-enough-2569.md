@@ -3,6 +3,7 @@ title: "มีประกันกลุ่มบริษัทอยู่แ
 description: "มีประกันกลุ่มบริษัทอยู่แล้วควรซื้อประกันสุขภาพเพิ่มไหม ชวนเช็กวงเงิน OPD/IPD ค่าห้อง โรงพยาบาลที่ใช้จริง และความคุ้มครองเมื่อเปลี่ยนงาน"
 publishDate: "2026-05-18"
 updatedDate: "2026-05-18"
+featuredRank: 1
 heroImage: "/images/company-group-health-insurance-enough-2569-cover.webp"
 heroAlt: "กราฟิกเช็กประกันกลุ่มบริษัทว่าพอไหมก่อนซื้อประกันสุขภาพเพิ่ม"
 socialImage: "/images/company-group-health-insurance-enough-2569-og-v2.jpg"

@@ -1118,7 +1118,7 @@ h3 {
   color: var(--brand-dark);
 }
 
-.site-insights {
+.pinned-articles {
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -1129,82 +1129,48 @@ h3 {
   overflow: hidden;
 }
 
-.insights-summary {
+.pinned-copy {
   background: linear-gradient(160deg, #0f766e, #135e95);
   color: white;
   padding: 24px;
 }
 
-.insights-summary .eyebrow,
-.insights-summary h2,
-.insights-summary p {
+.pinned-copy .eyebrow,
+.pinned-copy h2,
+.pinned-copy p {
   color: inherit;
 }
 
-.insights-summary h2 {
+.pinned-copy h2 {
   margin-top: 0;
 }
 
-.insight-number {
-  color: #fef7df;
-  font-size: clamp(2rem, 5vw, 3.4rem);
-  font-weight: 900;
-  line-height: 1;
-  margin: 18px 0;
-}
-
-.popular-posts {
-  padding: 24px 24px 24px 0;
-}
-
-.popular-head {
-  align-items: start;
-  display: flex;
-  gap: 12px;
-  justify-content: space-between;
-}
-
-.popular-head h3 {
-  margin-top: 0;
-}
-
-.popular-head span {
-  background: var(--accent-soft);
-  border: 1px solid rgba(245, 158, 11, 0.28);
-  border-radius: 999px;
-  color: #9a5b00;
-  font-size: 0.82rem;
-  font-weight: 800;
-  padding: 6px 10px;
-  white-space: nowrap;
-}
-
-.popular-posts ol {
-  counter-reset: popular;
+.pinned-articles ol {
+  counter-reset: pinned;
   display: grid;
   gap: 10px;
   list-style: none;
-  margin: 10px 0 0;
-  padding: 0;
+  margin: 0;
+  padding: 24px 24px 24px 0;
 }
 
-.popular-posts li {
+.pinned-articles li {
   align-items: center;
   background: #fbfcf8;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  counter-increment: popular;
+  counter-increment: pinned;
   display: grid;
   gap: 2px 12px;
   grid-template-columns: 38px minmax(0, 1fr);
   padding: 12px;
 }
 
-.popular-posts li::before {
+.pinned-articles li::before {
   background: #e9fbf8;
   border-radius: 999px;
   color: var(--brand-dark);
-  content: counter(popular);
+  content: counter(pinned);
   display: grid;
   font-weight: 900;
   height: 32px;
@@ -1212,13 +1178,13 @@ h3 {
   width: 32px;
 }
 
-.popular-posts a {
+.pinned-articles a {
   color: var(--ink);
   font-weight: 800;
   text-decoration: none;
 }
 
-.popular-posts small {
+.pinned-articles small {
   color: var(--muted);
   grid-column: 2;
 }
@@ -1415,7 +1381,7 @@ h3 {
 
   .trust-section,
   .trust-gallery,
-  .site-insights,
+  .pinned-articles,
   .lead-form-section,
   .lead-form-grid,
   .priority-grid,
@@ -1444,12 +1410,8 @@ h3 {
     flex-direction: column;
   }
 
-  .popular-posts {
+  .pinned-articles ol {
     padding: 20px;
-  }
-
-  .popular-head {
-    display: grid;
   }
 
   .cashflow-head span {
