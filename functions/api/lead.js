@@ -27,12 +27,22 @@ export async function onRequestPost({ request, env }) {
   if (webhookUrl) {
     const response = await fetch(webhookUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json; charset=utf-8" },
       body: JSON.stringify(lead)
     });
 
     if (!response.ok) {
       return Response.json({ ok: false, message: "Webhook failed" }, { status: 502 });
+    }
+
+    const responseText = await response.text();
+    try {
+      const result = JSON.parse(responseText);
+      if (result.ok === false) {
+        return Response.json({ ok: false, message: result.message || "Webhook rejected lead" }, { status: 502 });
+      }
+    } catch {
+      return Response.json({ ok: false, message: "Webhook did not return JSON" }, { status: 502 });
     }
 
     return Response.json({ ok: true, forwarded: true });
