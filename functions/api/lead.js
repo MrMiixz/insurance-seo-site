@@ -1,5 +1,5 @@
 const DEFAULT_LEAD_WEBHOOK_URL =
-  "https://script.google.com/macros/s/AKfycbyDg1N57s-nbolqxjFIR9AXAj2ZTdVothfEcaT1gzOZkZIXxFjqydqP-yWi9BexMTv7/exec";
+  "https://script.google.com/macros/s/AKfycbzzzlmxfDHhpOzCNA7S9WTICS4yYbdI4J9ZW4TcZWh_Q0V2jwca_AGQ1wiB_A6yKhAt0w/exec";
 
 export async function onRequestPost({ request, env }) {
   let payload;
