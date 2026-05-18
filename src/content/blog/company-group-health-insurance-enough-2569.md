@@ -5,7 +5,7 @@ publishDate: "2026-05-18"
 updatedDate: "2026-05-18"
 heroImage: "/images/company-group-health-insurance-enough-2569-cover.webp"
 heroAlt: "กราฟิกเช็กประกันกลุ่มบริษัทว่าพอไหมก่อนซื้อประกันสุขภาพเพิ่ม"
-socialImage: "/images/company-group-health-insurance-enough-2569-og.jpg"
+socialImage: "/images/company-group-health-insurance-enough-2569-og-v2.jpg"
 category: "ประกันสุขภาพ"
 tags: ["ประกันกลุ่ม", "สวัสดิการบริษัท", "ประกันสุขภาพพนักงาน", "OPD", "IPD"]
 faq:
