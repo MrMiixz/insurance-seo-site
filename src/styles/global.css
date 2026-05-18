@@ -817,13 +817,11 @@ h3 {
   padding: 24px;
 }
 
-.tools-intro h2,
-.agent-app-cta h2 {
+.tools-intro h2 {
   margin-top: 0;
 }
 
 .tools-intro p,
-.agent-app-cta p,
 .tool-note {
   color: var(--muted);
 }
@@ -1118,77 +1116,6 @@ h3 {
   color: var(--brand-dark);
 }
 
-.pinned-articles {
-  background: #ffffff;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  display: grid;
-  gap: 22px;
-  grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1.18fr);
-  margin: 22px 0;
-  overflow: hidden;
-}
-
-.pinned-copy {
-  background: linear-gradient(160deg, #0f766e, #135e95);
-  color: white;
-  padding: 24px;
-}
-
-.pinned-copy .eyebrow,
-.pinned-copy h2,
-.pinned-copy p {
-  color: inherit;
-}
-
-.pinned-copy h2 {
-  margin-top: 0;
-}
-
-.pinned-articles ol {
-  counter-reset: pinned;
-  display: grid;
-  gap: 10px;
-  list-style: none;
-  margin: 0;
-  padding: 24px 24px 24px 0;
-}
-
-.pinned-articles li {
-  align-items: center;
-  background: #fbfcf8;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  counter-increment: pinned;
-  display: grid;
-  gap: 2px 12px;
-  grid-template-columns: 38px minmax(0, 1fr);
-  padding: 12px;
-}
-
-.pinned-articles li::before {
-  background: #e9fbf8;
-  border-radius: 999px;
-  color: var(--brand-dark);
-  content: counter(pinned);
-  display: grid;
-  font-weight: 900;
-  height: 32px;
-  place-items: center;
-  width: 32px;
-}
-
-.pinned-articles a {
-  color: var(--ink);
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.pinned-articles small {
-  color: var(--muted);
-  grid-column: 2;
-}
-
 .lead-form-section {
   background: #ffffff;
   border: 1px solid var(--line);
@@ -1308,24 +1235,6 @@ h3 {
   margin: 0;
 }
 
-.agent-app-cta {
-  align-items: center;
-  background: linear-gradient(135deg, #effdfa 0%, #edf4ff 55%, #fff7df 100%);
-  border: 1px solid rgba(15, 118, 110, 0.22);
-  border-radius: var(--radius);
-  display: grid;
-  gap: 18px;
-  grid-template-columns: minmax(0, 1fr) auto;
-  padding: 22px;
-}
-
-.agent-app-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: flex-end;
-}
-
 .risk-scale {
   display: grid;
   gap: 10px;
@@ -1381,14 +1290,12 @@ h3 {
 
   .trust-section,
   .trust-gallery,
-  .pinned-articles,
   .lead-form-section,
   .lead-form-grid,
   .priority-grid,
   .tool-form-grid,
   .tool-result-grid,
-  .waiting-grid,
-  .agent-app-cta {
+  .waiting-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1404,14 +1311,9 @@ h3 {
 
   .cashflow-head,
   .cashflow-row,
-  .lead-actions,
-  .agent-app-actions {
+  .lead-actions {
     align-items: stretch;
     flex-direction: column;
-  }
-
-  .pinned-articles ol {
-    padding: 20px;
   }
 
   .cashflow-head span {
