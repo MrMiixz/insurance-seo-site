@@ -1,0 +1,350 @@
+---
+const agentAppUrl = "https://agent-super-apps.vercel.app";
+const lineUrl = "https://lin.ee/pISkWyf";
+---
+
+<section class="tools-suite" aria-labelledby="tools-suite-title">
+  <div class="tools-intro">
+    <p class="eyebrow">Self-check tools</p>
+    <h2 id="tools-suite-title">ลองกดคำนวณก่อนตัดสินใจ</h2>
+    <p>
+      เครื่องมือเหล่านี้ช่วยให้เห็นภาพเบื้องต้นโดยไม่ต้องใส่ชื่อ เลขกรมธรรม์ หรือข้อมูลส่วนตัว
+      ถ้าผลลัพธ์เริ่มมีคำถามค่อยทัก LINE OA ให้ช่วยดูต่อได้ครับ
+    </p>
+  </div>
+
+  <div class="tool-accordion" data-insurance-tools>
+    <details class="tool-panel" open>
+      <summary>
+        <span>
+          <strong>คำนวณแผนประกันสุขภาพ</strong>
+          <small>สัญญาหลัก + Health Fit DD แบบเหมาจ่าย</small>
+        </span>
+      </summary>
+      <div class="tool-content health-tool" data-health-tool>
+        <div class="tool-form-grid">
+          <label>
+            เพศ
+            <select data-health-input="gender">
+              <option value="female" selected>หญิง</option>
+              <option value="male">ชาย</option>
+            </select>
+          </label>
+          <label>
+            อายุ
+            <input data-health-input="age" type="number" min="0" max="80" value="30" />
+          </label>
+          <label>
+            ชั้นอาชีพ
+            <select data-health-input="occ">
+              <option value="1">ชั้น 1</option>
+              <option value="2" selected>ชั้น 2</option>
+              <option value="3">ชั้น 3</option>
+            </select>
+          </label>
+          <label>
+            สัญญาหลัก
+            <select data-health-input="mainPlan">
+              <option value="KBP_9999" selected>คุ้มธนกิจ 99/99</option>
+              <option value="KBP_9920">คุ้มธนกิจ 99/20</option>
+            </select>
+          </label>
+          <label>
+            ทุนสัญญาหลัก
+            <input data-health-input="sum" type="number" min="50000" step="50000" value="100000" />
+          </label>
+          <label>
+            แผนสุขภาพ
+            <select data-health-input="healthPlan">
+              <option value="HFD_1M">Health Fit DD 1 ล้าน</option>
+              <option value="HFD_5M">Health Fit DD 5 ล้าน</option>
+              <option value="HFD_15M" selected>Health Fit DD 15 ล้าน</option>
+              <option value="HFD_30M">Health Fit DD 30 ล้าน</option>
+            </select>
+          </label>
+          <label>
+            ความรับผิดส่วนแรก
+            <select data-health-input="deduct">
+              <option value="Ded0" selected>ไม่มี</option>
+              <option value="Ded30k">30,000 บาท</option>
+              <option value="Ded50k">50,000 บาท</option>
+              <option value="Ded100k">100,000 บาท</option>
+            </select>
+          </label>
+          <label>
+            งวดชำระ
+            <select data-health-input="payMode">
+              <option value="m1" selected>รายปี</option>
+              <option value="m6">ราย 6 เดือน</option>
+              <option value="m3">ราย 3 เดือน</option>
+              <option value="m12">รายเดือน</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="tool-result-grid">
+          <div class="result-card strong">
+            <span>เบี้ยรวมโดยประมาณ</span>
+            <strong data-health-result="total">-</strong>
+            <small data-health-result="payText">รายปี</small>
+          </div>
+          <div class="result-card">
+            <span>สัญญาหลัก</span>
+            <strong data-health-result="main">-</strong>
+            <small>คำนวณจากทุนที่เลือก</small>
+          </div>
+          <div class="result-card">
+            <span>สุขภาพเหมาจ่าย</span>
+            <strong data-health-result="health">-</strong>
+            <small data-health-result="room">ค่าห้องตามแผน</small>
+          </div>
+        </div>
+        <p class="tool-note" data-health-result="note">
+          ตัวเลขนี้เป็นเครื่องมือช่วยประเมินเบื้องต้น ควรตรวจสอบเงื่อนไขจริงก่อนเสนอขายหรือสมัคร
+        </p>
+      </div>
+    </details>
+
+    <details class="tool-panel">
+      <summary>
+        <span>
+          <strong>คำนวณระยะเวลารอคอย</strong>
+          <small>ใส่วันเริ่มสัญญาแล้วดูวันที่คุ้มครองแต่ละขั้น</small>
+        </span>
+      </summary>
+      <div class="tool-content waiting-tool" data-waiting-tool>
+        <label class="single-field">
+          วันเริ่มมีผลสัญญา
+          <input data-waiting-input="startDate" type="date" />
+        </label>
+        <div class="waiting-grid" data-waiting-result></div>
+        <p class="tool-note">แสดงเพื่อช่วยจำวันสำคัญเท่านั้น เงื่อนไขจริงให้ยึดตามกรมธรรม์และข้อกำหนดของบริษัท</p>
+      </div>
+    </details>
+
+    <details class="tool-panel">
+      <summary>
+        <span>
+          <strong>คำนวณ IRR ประกันชีวิต</strong>
+          <small>ดูผลตอบแทนภายในจากเบี้ย เงินคืน และเงินครบสัญญา</small>
+        </span>
+      </summary>
+      <div class="tool-content irr-tool" data-irr-tool>
+        <div class="tool-form-grid">
+          <label>
+            ทุนประกัน
+            <input data-irr-input="sumAssured" type="number" min="0" step="50000" value="1000000" />
+          </label>
+          <label>
+            เบี้ยปีละ
+            <input data-irr-input="premium" type="number" min="0" step="1000" value="50000" />
+          </label>
+          <label>
+            ชำระเบี้ย (ปี)
+            <input data-irr-input="payTerm" type="number" min="1" max="99" value="20" />
+          </label>
+          <label>
+            ระยะคุ้มครอง (ปี)
+            <input data-irr-input="policyTerm" type="number" min="1" max="99" value="20" />
+          </label>
+          <label>
+            เงินคืนต่อปี (%)
+            <input data-irr-input="cashbackPercent" type="number" min="0" step="0.1" value="1" />
+          </label>
+          <label>
+            เงินครบสัญญา (%)
+            <input data-irr-input="maturityPercent" type="number" min="0" step="1" value="100" />
+          </label>
+        </div>
+        <div class="tool-result-grid">
+          <div class="result-card strong">
+            <span>IRR โดยประมาณ</span>
+            <strong data-irr-result="irr">-</strong>
+            <small>ผลตอบแทนภายใน</small>
+          </div>
+          <div class="result-card">
+            <span>เทียบดอกเบี้ยก่อนภาษี</span>
+            <strong data-irr-result="bank">-</strong>
+            <small>สมมติหักภาษีดอกเบี้ย 15%</small>
+          </div>
+          <div class="result-card">
+            <span>กำไรสุทธิรวม</span>
+            <strong data-irr-result="profit">-</strong>
+            <small>ผลประโยชน์รวมลบเบี้ยรวม</small>
+          </div>
+        </div>
+        <div class="cashflow-box">
+          <div class="cashflow-head">
+            <strong>ตารางกระแสเงินสด</strong>
+            <span data-irr-result="summary">-</span>
+          </div>
+          <div class="cashflow-table" data-irr-result="table"></div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <aside class="agent-app-cta" aria-labelledby="agent-app-title">
+    <div>
+      <p class="eyebrow">Agent-App Full Version</p>
+      <h2 id="agent-app-title">สนใจใช้ Agent-App ฉบับเต็ม</h2>
+      <p>
+        <strong>เครื่องมือนี้เหมาะสำหรับตัวแทนไทยประกันชีวิตเท่านั้น</strong> มีระบบเช็กเบี้ยเต็มรูปแบบ
+        เครื่องมือวางแผน งานติดตาม และเมนูสำหรับใช้งานประจำวันมากกว่าหน้าเว็บนี้
+      </p>
+    </div>
+    <div class="agent-app-actions">
+      <a class="button" href={lineUrl} target="_blank" rel="noopener noreferrer">สมัครใช้งาน</a>
+      <a class="button secondary" href={agentAppUrl} target="_blank" rel="noopener noreferrer">เข้าใช้งาน</a>
+    </div>
+  </aside>
+</section>
+
+<script>
+  // @ts-nocheck
+  const money = new Intl.NumberFormat("th-TH", { maximumFractionDigits: 0 });
+  const dateFormat = new Intl.DateTimeFormat("th-TH", { day: "numeric", month: "short", year: "numeric" });
+  const payLabels = { m1: "รายปี", m6: "ราย 6 เดือน", m3: "ราย 3 เดือน", m12: "รายเดือน" };
+  const healthRooms = {
+    HFD_1M: "ค่าห้อง 2,000 บาท",
+    HFD_5M: "ค่าห้อง 3,000 บาท",
+    HFD_15M: "ค่าห้อง 6,000 บาท",
+    HFD_30M: "ค่าห้อง 12,000 บาท"
+  };
+
+  const toNumber = (value) => {
+    const number = Number(String(value ?? "").replace(/,/g, ""));
+    return Number.isFinite(number) ? number : 0;
+  };
+
+  const addDays = (value, days) => {
+    const date = new Date(`${value}T00:00:00`);
+    date.setDate(date.getDate() + days);
+    return date;
+  };
+
+  const findRate = (rows, criteria) => rows.find((row) => {
+    const age = criteria.age;
+    const occ = String(criteria.occ);
+    const rowOcc = String(row.occ || "");
+    const matchOcc = !rowOcc || rowOcc === "any" || rowOcc.includes(occ);
+    const matchDeduct = !criteria.deduct || !row.deduct || row.deduct === criteria.deduct;
+    return row.productCode === criteria.productCode
+      && age >= row.ageFrom
+      && age <= row.ageTo
+      && (row.gender === criteria.gender || row.gender === "any")
+      && matchOcc
+      && matchDeduct;
+  });
+
+  const calculateIrr = (flows) => {
+    let low = -0.99;
+    let high = 10;
+    let rate = 0;
+    for (let i = 0; i < 100; i += 1) {
+      rate = (low + high) / 2;
+      const npv = flows.reduce((sum, amount, year) => sum + amount / Math.pow(1 + rate, year), 0);
+      if (npv > 0) low = rate;
+      else high = rate;
+    }
+    return Number.isFinite(rate) ? rate * 100 : null;
+  };
+
+  const initHealthTool = async () => {
+    const root = document.querySelector("[data-health-tool]");
+    if (!root) return;
+    const data = await fetch("/data/health-premiums-lite.json").then((response) => response.json());
+    const rows = data.rows || [];
+    const inputs = Object.fromEntries([...root.querySelectorAll("[data-health-input]")].map((input) => [input.dataset.healthInput, input]));
+    const outputs = Object.fromEntries([...root.querySelectorAll("[data-health-result]")].map((node) => [node.dataset.healthResult, node]));
+
+    const calculate = () => {
+      const age = toNumber(inputs.age.value);
+      const sum = toNumber(inputs.sum.value);
+      const payMode = inputs.payMode.value;
+      const mainRate = findRate(rows, { productCode: inputs.mainPlan.value, age, gender: inputs.gender.value, occ: inputs.occ.value });
+      const healthRate = findRate(rows, { productCode: inputs.healthPlan.value, age, gender: inputs.gender.value, occ: inputs.occ.value, deduct: inputs.deduct.value });
+      const mainPremium = mainRate ? Math.round((sum / 1000) * mainRate[payMode]) : 0;
+      const healthPremium = healthRate ? Math.round(healthRate[payMode]) : 0;
+      const total = mainPremium + healthPremium;
+      outputs.total.textContent = total ? `${money.format(total)} บาท` : "-";
+      outputs.main.textContent = mainRate ? `${money.format(mainPremium)} บาท` : "ไม่พบข้อมูล";
+      outputs.health.textContent = healthRate ? `${money.format(healthPremium)} บาท` : "ไม่พบข้อมูล";
+      outputs.payText.textContent = payLabels[payMode];
+      outputs.room.textContent = healthRooms[inputs.healthPlan.value] || "ตามแผนที่เลือก";
+      outputs.note.textContent = healthRate && mainRate
+        ? "ตัวเลขนี้เป็นเครื่องมือช่วยประเมินเบื้องต้น ควรตรวจสอบเงื่อนไขจริงก่อนเสนอขายหรือสมัคร"
+        : "ไม่พบข้อมูลตามเงื่อนไขที่เลือก ลองปรับอายุ เพศ ชั้นอาชีพ หรือแผนอีกครั้ง";
+    };
+
+    Object.values(inputs).forEach((input) => input.addEventListener("input", calculate));
+    calculate();
+  };
+
+  const initWaitingTool = () => {
+    const root = document.querySelector("[data-waiting-tool]");
+    if (!root) return;
+    const input = root.querySelector("[data-waiting-input='startDate']");
+    const result = root.querySelector("[data-waiting-result]");
+    const today = new Date().toISOString().slice(0, 10);
+    input.value = today;
+    const rules = [
+      { label: "อุบัติเหตุ", days: 0, desc: "คุ้มครองทันทีตามเงื่อนไขกรมธรรม์" },
+      { label: "โรคทั่วไป", days: 30, desc: "เริ่มใช้สิทธิหลังครบ 30 วัน" },
+      { label: "Fax Claim", days: 90, desc: "โรคทั่วไปไม่ต้องสำรองจ่าย เมื่อครบเงื่อนไข" },
+      { label: "โรคร้ายแรง / โรคเรื้อรัง", days: 120, desc: "ควรเช็กเงื่อนไขก่อนเข้ารักษา" }
+    ];
+    const render = () => {
+      result.innerHTML = rules.map((rule) => {
+        const date = addDays(input.value, rule.days);
+        return `<div class="waiting-item">
+          <span>${rule.days === 0 ? "ทันที" : `${rule.days} วัน`}</span>
+          <strong>${rule.label}</strong>
+          <b>${dateFormat.format(date)}</b>
+          <small>${rule.desc}</small>
+        </div>`;
+      }).join("");
+    };
+    input.addEventListener("input", render);
+    render();
+  };
+
+  const initIrrTool = () => {
+    const root = document.querySelector("[data-irr-tool]");
+    if (!root) return;
+    const inputs = Object.fromEntries([...root.querySelectorAll("[data-irr-input]")].map((input) => [input.dataset.irrInput, input]));
+    const outputs = Object.fromEntries([...root.querySelectorAll("[data-irr-result]")].map((node) => [node.dataset.irrResult, node]));
+    const calculate = () => {
+      const sumAssured = toNumber(inputs.sumAssured.value);
+      const premium = toNumber(inputs.premium.value);
+      const payTerm = Math.max(1, toNumber(inputs.payTerm.value));
+      const policyTerm = Math.max(1, toNumber(inputs.policyTerm.value));
+      const cashbackPercent = toNumber(inputs.cashbackPercent.value);
+      const maturityPercent = toNumber(inputs.maturityPercent.value);
+      const flows = Array.from({ length: policyTerm + 1 }, (_, year) => {
+        const pay = year < payTerm ? -premium : 0;
+        const cashback = year > 0 && year < policyTerm ? (sumAssured * cashbackPercent) / 100 : 0;
+        const maturity = year === policyTerm ? (sumAssured * maturityPercent) / 100 : 0;
+        return Math.round(pay + cashback + maturity);
+      });
+      const totalPremium = premium * payTerm;
+      const totalBenefit = flows.reduce((sum, flow) => sum + Math.max(0, flow), 0);
+      const profit = flows.reduce((sum, flow) => sum + flow, 0);
+      const irr = profit < 0 ? null : calculateIrr(flows);
+      outputs.irr.textContent = irr === null ? "ขาดทุน" : `${irr.toFixed(2)}%`;
+      outputs.bank.textContent = irr === null ? "-" : `${(irr / 0.85).toFixed(2)}%`;
+      outputs.profit.textContent = `${money.format(profit)} บาท`;
+      outputs.summary.textContent = `เบี้ยรวม ${money.format(totalPremium)} บาท | ผลประโยชน์รวม ${money.format(totalBenefit)} บาท`;
+      outputs.table.innerHTML = flows.map((flow, year) => `<div class="cashflow-row ${flow < 0 ? "is-pay" : flow > 0 ? "is-receive" : ""}">
+        <span>ปีที่ ${year}</span>
+        <strong>${money.format(flow)} บาท</strong>
+      </div>`).join("");
+    };
+    Object.values(inputs).forEach((input) => input.addEventListener("input", calculate));
+    calculate();
+  };
+
+  initHealthTool().catch(() => {});
+  initWaitingTool();
+  initIrrTool();
+</script>
