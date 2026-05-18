@@ -1,3 +1,6 @@
+const DEFAULT_LEAD_WEBHOOK_URL =
+  "https://script.google.com/macros/s/AKfycbyDg1N57s-nbolqxjFIR9AXAj2ZTdVothfEcaT1gzOZkZIXxFjqydqP-yWi9BexMTv7/exec";
+
 export async function onRequestPost({ request, env }) {
   let payload;
   try {
@@ -19,8 +22,10 @@ export async function onRequestPost({ request, env }) {
     ...payload
   };
 
-  if (env.LEAD_WEBHOOK_URL) {
-    const response = await fetch(env.LEAD_WEBHOOK_URL, {
+  const webhookUrl = env.LEAD_WEBHOOK_URL || DEFAULT_LEAD_WEBHOOK_URL;
+
+  if (webhookUrl) {
+    const response = await fetch(webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(lead)
@@ -36,7 +41,7 @@ export async function onRequestPost({ request, env }) {
   return Response.json({
     ok: true,
     forwarded: false,
-    message: "Set LEAD_WEBHOOK_URL in Cloudflare Pages to save and notify leads."
+    message: "Set LEAD_WEBHOOK_URL in Cloudflare Pages to override the default lead webhook."
   });
 }
 
