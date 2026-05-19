@@ -46,7 +46,7 @@
           </label>
           <label>
             ทุนสัญญาหลัก
-            <input data-health-input="sum" type="number" min="50000" step="50000" value="100000" />
+            <input data-health-input="sum" type="text" inputmode="numeric" value="100,000" />
           </label>
           <label>
             แผนสุขภาพ
@@ -92,6 +92,11 @@
             <span>สุขภาพเหมาจ่าย</span>
             <strong data-health-result="health">-</strong>
             <small data-health-result="room">ค่าห้องตามแผน</small>
+          </div>
+          <div class="result-card">
+            <span>IRR สัญญาหลักโดยประมาณ</span>
+            <strong data-health-result="irr">-</strong>
+            <small data-health-result="irrNote">คิดเฉพาะเบี้ยสัญญาหลัก</small>
           </div>
         </div>
         <p class="tool-note" data-health-result="note">
@@ -197,6 +202,11 @@
     return Number.isFinite(number) ? number : 0;
   };
 
+  const formatNumberInput = (input) => {
+    const value = String(input.value || "").replace(/[^\d]/g, "");
+    input.value = value ? money.format(Number(value)) : "";
+  };
+
   const addDays = (value, days) => {
     const date = new Date(`${value}T00:00:00`);
     date.setDate(date.getDate() + days);
@@ -245,11 +255,23 @@
       const mainRate = findRate(rows, { productCode: inputs.mainPlan.value, age, gender: inputs.gender.value, occ: inputs.occ.value });
       const healthRate = findRate(rows, { productCode: inputs.healthPlan.value, age, gender: inputs.gender.value, occ: inputs.occ.value, deduct: inputs.deduct.value });
       const mainPremium = mainRate ? Math.round((sum / 1000) * mainRate[payMode]) : 0;
+      const mainAnnualPremium = mainRate ? Math.round((sum / 1000) * mainRate.m1) : 0;
       const healthPremium = healthRate ? Math.round(healthRate[payMode]) : 0;
       const total = mainPremium + healthPremium;
+      const policyTerm = Math.max(1, 99 - age);
+      const payTerm = inputs.mainPlan.value === "KBP_9920" ? Math.min(20, policyTerm) : policyTerm;
+      const healthIrr = mainAnnualPremium && sum
+        ? calculateIrr(Array.from({ length: policyTerm + 1 }, (_, year) => {
+            const pay = year < payTerm ? -mainAnnualPremium : 0;
+            const maturity = year === policyTerm ? sum : 0;
+            return pay + maturity;
+          }))
+        : null;
       outputs.total.textContent = total ? `${money.format(total)} บาท` : "-";
       outputs.main.textContent = mainRate ? `${money.format(mainPremium)} บาท` : "ไม่พบข้อมูล";
       outputs.health.textContent = healthRate ? `${money.format(healthPremium)} บาท` : "ไม่พบข้อมูล";
+      outputs.irr.textContent = healthIrr === null ? "-" : `${healthIrr.toFixed(2)}%`;
+      outputs.irrNote.textContent = mainRate ? `ครบอายุ 99 / ชำระ ${payTerm} ปี` : "คิดเฉพาะสัญญาหลัก";
       outputs.payText.textContent = payLabels[payMode];
       outputs.room.textContent = healthRooms[inputs.healthPlan.value] || "ตามแผนที่เลือก";
       outputs.note.textContent = healthRate && mainRate
@@ -257,7 +279,14 @@
         : "ไม่พบข้อมูลตามเงื่อนไขที่เลือก ลองปรับอายุ เพศ ชั้นอาชีพ หรือแผนอีกครั้ง";
     };
 
-    Object.values(inputs).forEach((input) => input.addEventListener("input", calculate));
+    formatNumberInput(inputs.sum);
+    inputs.sum.addEventListener("input", () => {
+      formatNumberInput(inputs.sum);
+      calculate();
+    });
+    Object.values(inputs)
+      .filter((input) => input !== inputs.sum)
+      .forEach((input) => input.addEventListener("input", calculate));
     calculate();
   };
 
