@@ -34,5 +34,7 @@ Batch topic: เบี้ยประกันสุขภาพเพิ่ม�
 Automation basis: insurance-full-pipeline-daily-output + SEO writer/publisher draft prompts.
 Visual system: PKStyle five-image set, generated locally as optimized website assets.
 Validation: article validator passed; npm build passed on 2026-05-26.
-Live publish status: blocked in this session because Wrangler requires CLOUDFLARE_API_TOKEN. Live URL currently returns fallback/home content, not the new article content.
+Live publish status: published via GitHub push to main; Cloudflare Pages deployment 926419f7 succeeded.
+Live article: https://insurance-by-miixz.pages.dev/blog/health-insurance-premium-increase-by-age-2569/
+Live share page: https://insurance-by-miixz.pages.dev/share/health-insurance-premium-increase-by-age-2569/
 Rule update: user approved publishing by default after validation/build for future website article batches unless explicitly marked draft/review-only.
